@@ -201,16 +201,150 @@ h3 {
 }
 /* 响应式调整 */
 @media (max-width: 768px) {
+    /* 导航栏 */
+    header {
+        padding: 0.8rem;
+    }
+    
+    nav a {
+        margin: 0 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    /* 主页部分 */
+    #home .home-container {
+        flex-direction: column;
+        width: 95%;
+        gap: 1rem;
+    }
+    
+    .profile-img {
+        max-width: 200px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+        width: 80%;
+    }
+    
+    h3 {
+        font-size: 1.1rem;
+    }
+    
+    /* 教育背景 */
+    .education-item {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .edu-time {
+        width: auto;
+        font-size: 0.9em;
+    }
+    
+    .edu-details strong {
+        font-size: 1em;
+    }
+    
+    .edu-details p {
+        font-size: 0.9em;
+    }
+    
+    /* 内容区域 */
+    section {
+        padding: 20px 15px;
+    }
+    
+    #publications,
+    #patents,
+    #honors,
+    #teaching,
+    #contact {
+        padding: 20px 15px;
+    }
+    
+    /* 文字大小 */
+    p, ul {
+        font-size: 1rem;
+    }
+    
+    .pub-content,
+    .patent-content,
+    .honor-content,
+    .teaching-content {
+        font-size: 0.95rem;
+    }
+    
+    /* 联系方式 */
+    .contact-simple {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .contact-simple strong {
+        display: block;
+        margin-left: 0 !important;
+        margin-bottom: 5px;
+    }
+    
+    .contact-simple a {
+        display: block;
+        margin-right: 0;
+    }
+    
+    /* 视频模态框 */
     #modalVideo {
         width: 95vw;
         max-height: 60vh;
     }
+    
     .close {
         top: 5px;
         right: 5px;
         font-size: 24px;
     }
+    
+    /* 页脚 */
+    footer {
+        padding: 15px;
+    }
+    
+    footer p {
+        font-size: 0.85rem;
+    }
 }
+
+/* 超小屏幕适配 */
+@media (max-width: 480px) {
+    nav a {
+        margin: 0 0.3rem;
+        font-size: 0.8rem;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        width: 90%;
+    }
+    
+    .profile-img {
+        max-width: 150px;
+    }
+    
+    p, ul {
+        font-size: 0.95rem;
+    }
+}
+
 /* 出版物部分 - 按年份分组 */
 #publications {
     max-width: 900px;
