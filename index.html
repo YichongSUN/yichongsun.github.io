@@ -3,12 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yichong SUN - Personal Website</title>
+    <title>Yichong SUN (孙艺崇) - Medical Robotics Researcher | CUHK PhD Candidate</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Yichong SUN is a PhD candidate at CUHK specializing in medical robotics, robotic-assisted surgery, system design, perception, and control. Research publications in IEEE TRO, T-Mech, IROS.">
+    <meta name="keywords" content="Yichong SUN, 孙艺崇, medical robotics, surgical robotics, CUHK, robotic-assisted surgery, magnetic localization, endoscopic surgery, robot control, PhD researcher">
+    <meta name="author" content="Yichong SUN">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yichongsun.github.io/">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Yichong SUN - Medical Robotics Researcher">
+    <meta property="og:description" content="PhD candidate at CUHK specializing in medical robotics and robotic-assisted surgery">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yichongsun.github.io/">
+    <meta property="og:image" content="https://yichongsun.github.io/assets/images/profile.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Yichong SUN - Medical Robotics Researcher">
+    <meta name="twitter:description" content="PhD candidate at CUHK specializing in medical robotics and robotic-assisted surgery">
+    <meta name="twitter:image" content="https://yichongsun.github.io/assets/images/profile.jpg">
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Yichong SUN",
+      "alternateName": "孙艺崇",
+      "url": "https://yichongsun.github.io/",
+      "image": "https://yichongsun.github.io/assets/images/profile.jpg",
+      "jobTitle": "PhD Candidate",
+      "worksFor": {
+        "@type": "EducationalOrganization",
+        "name": "The Chinese University of Hong Kong",
+        "department": "Faculty of Medicine"
+      },
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "Harbin Institute of Technology"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "Chongqing University"
+        }
+      ],
+      "email": "yichongsun@link.cuhk.edu.hk",
+      "knowsAbout": ["Medical Robotics", "Robotic-Assisted Surgery", "Surgical Robotics", "Robot Control", "Magnetic Localization"],
+      "sameAs": [
+        "https://github.com/yichongsun"
+      ]
+    }
+    </script>
+    
     <link rel="stylesheet" href="assets/css/ycsun.css">
 </head>
 <body>
     <header>
-        <nav>
+        <nav role="navigation" aria-label="Main navigation">
             <a href="#home">About</a>
             <a href="#publications">Publications</a>
             <a href="#patents">Patents</a>
@@ -18,6 +72,7 @@
         </nav>
     </header>
 
+    <main>
     <section id="home">
         <div class="home-container">
             <img src="assets/images/profile.jpg" alt="Profile Picture" class="profile-img">
@@ -110,13 +165,13 @@
         <div class="publication-year">
             <!-- <h3>2025</h3> -->
             <ul>
-                <li>
+                <li itemscope itemtype="https://schema.org/ScholarlyArticle">
                     <div class="pub-content">
                         <span class="pub-title-author">
-                            <em>Y. Sun</em>, Y. Xian and et al.
-                            <strong>A MagsL-HUD Endoscopic System for Magnetic Compression Anastomosis Surgery in Unstructured Endoluminal Environment.</strong>
-                            <span class="journal">IEEE Transactions on Robotics (Accepted)</span>,
-                            <span class="year">2025</span>
+                            <em itemprop="author">Y. Sun</em>, Y. Xian and et al.
+                            <strong itemprop="headline">A MagsL-HUD Endoscopic System for Magnetic Compression Anastomosis Surgery in Unstructured Endoluminal Environment.</strong>
+                            <span class="journal" itemprop="publisher">IEEE Transactions on Robotics (Accepted)</span>,
+                            <span class="year" itemprop="datePublished">2025</span>
                         </span>
                     </div>
                 </li>
@@ -346,12 +401,13 @@
 
     <section id="contact">
         <h2>Contact</h2>
-        <div class="contact-simple">
-            <strong>Email:</strong> <a href="mailto:yichongsun@link.cuhk.edu.hk">yichongsun@link.cuhk.edu.hk</a> 
-            <strong>GitHub:</strong> <a href="https://github.com/yichongsun" target="_blank">github.com/yichongsun</a>
-            <strong>WeChat:</strong> syc0987654
+        <div class="contact-simple" itemscope itemtype="https://schema.org/ContactPoint">
+            <strong>Email:</strong> <a href="mailto:yichongsun@link.cuhk.edu.hk" itemprop="email">yichongsun@link.cuhk.edu.hk</a> 
+            <strong>GitHub:</strong> <a href="https://github.com/yichongsun" target="_blank" rel="noopener">github.com/yichongsun</a>
+            <strong>WeChat:</strong> <span itemprop="contactOption">syc0987654</span>
         </div>
     </section>
+    </main>
 
     <footer>
         <p>Code © Yichong SUN 2025</p>
