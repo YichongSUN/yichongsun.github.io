@@ -207,8 +207,8 @@ h3 {
     }
     
     nav a {
-        margin: 0 0.5rem;
-        font-size: 0.9rem;
+        margin: 0 0.4rem;
+        font-size: 0.85rem;
     }
     
     /* 主页部分 */
@@ -219,21 +219,21 @@ h3 {
     }
     
     .profile-img {
-        max-width: 200px;
+        max-width: 180px;
     }
     
     h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
         text-align: center;
     }
     
     h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         width: 80%;
     }
     
     h3 {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     
     /* 教育背景 */
@@ -244,20 +244,20 @@ h3 {
     
     .edu-time {
         width: auto;
-        font-size: 0.9em;
+        font-size: 0.85em;
     }
     
     .edu-details strong {
-        font-size: 1em;
+        font-size: 0.95em;
     }
     
     .edu-details p {
-        font-size: 0.9em;
+        font-size: 0.85em;
     }
     
     /* 内容区域 */
     section {
-        padding: 20px 15px;
+        padding: 15px 12px;
     }
     
     #publications,
@@ -265,32 +265,34 @@ h3 {
     #honors,
     #teaching,
     #contact {
-        padding: 20px 15px;
+        padding: 15px 12px;
     }
     
     /* 文字大小 */
     p, ul {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
     
     .pub-content,
     .patent-content,
     .honor-content,
     .teaching-content {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
+        line-height: 1.4;
     }
     
     /* 联系方式 */
     .contact-simple {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
+        font-size: 0.9rem;
     }
     
     .contact-simple strong {
         display: block;
         margin-left: 0 !important;
-        margin-bottom: 5px;
+        margin-bottom: 3px;
     }
     
     .contact-simple a {
@@ -312,36 +314,43 @@ h3 {
     
     /* 页脚 */
     footer {
-        padding: 15px;
+        padding: 12px;
     }
     
     footer p {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 }
 
 /* 超小屏幕适配 */
 @media (max-width: 480px) {
     nav a {
-        margin: 0 0.3rem;
-        font-size: 0.8rem;
+        margin: 0 0.25rem;
+        font-size: 0.75rem;
     }
     
     h1 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
     
     h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         width: 90%;
     }
     
     .profile-img {
-        max-width: 150px;
+        max-width: 140px;
     }
     
     p, ul {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
+    }
+    
+    .pub-content,
+    .patent-content,
+    .honor-content,
+    .teaching-content {
+        font-size: 0.8rem;
     }
 }
 
