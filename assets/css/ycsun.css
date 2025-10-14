@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 /* 头部导航栏 */
@@ -30,7 +30,7 @@ nav a:hover {
 
 /* 内容区域 */
 section {
-    padding: 2rem;
+    padding: 10px 30px;
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -43,13 +43,13 @@ section {
     display: flex;
     align-items: center;
     gap: 2rem;
-    width: 100%;
+    width: 80%;
     justify-content: center;
 }
 
 .profile-img {
-    max-width: 250px;
-    border-radius: 50%;
+    max-width: 280px;
+    border-radius: 70%;
 }
 
 .bio {
@@ -62,19 +62,21 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 0.5rem;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     border-bottom: 2px solid #1a2a44;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.2rem;
     text-align: center;
+    display: inline-block;
+    /* width: 10%; */
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin: 0.5rem 0;
 }
 
@@ -149,8 +151,6 @@ h3 {
     cursor: pointer; /* 提示可点击 */
 }
 
-/* 其他样式保持不变 */
-
 /* 视频模态框样式 */
 .video-modal {
     display: none;
@@ -215,14 +215,25 @@ h3 {
 #publications {
     max-width: 900px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 30px 20px;
     text-align: left;
+}
+
+#publications h2 {
+    margin-bottom: 5px;
 }
 
 .publication-year {
     text-align: left;
-    margin-bottom: 2rem;
+    margin-bottom: -15px;
     width: 100%;
+}
+
+.publication-year h3 {
+    text-align: left;
+    border-bottom: 1px solid #1a2a44;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1px;
 }
 
 .pub-title-author {
@@ -252,16 +263,24 @@ h3 {
 
 .publication-year ul {
     list-style: none;
-    padding-left: 0;
+    padding: 0;
     margin-left: 0;
     text-align: left;
 }
 
 .publication-year li {
-    margin-bottom: 1.2rem;
+    margin-bottom: 10px;
     padding-bottom: 1rem;
     border-bottom: 1px solid #eee;
     text-align: left;
+}
+
+.publication-year li:last-child {
+    margin-bottom: 0;
+}
+
+.pub-content {
+    line-height: 1.2;
 }
 
 .journal {
@@ -273,13 +292,6 @@ h3 {
     color: #e53e3e;
     text-decoration: none;
     margin-left: 5px;
-}
-
-.publication-year h3 {
-    text-align: left;
-    border-bottom: 1px solid #1a2a44;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
 }
 
 /* 通用样式 */
@@ -298,19 +310,254 @@ a:hover {
     text-decoration: underline;
 }
 
-/* 响应式调整 */
+/* 联系方式部分样式 - 简化版本 */
+#contact {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    text-align: left;
+}
+
+#contact h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #1a2a44;
+    border-bottom: 2px solid #1a2a44;
+    padding-bottom: 0.5rem;
+}
+
+.contact-simple {
+    text-align: left;
+}
+
+.contact-simple strong {
+    display: inline-block;
+    color: #1a2a44;
+    margin-right: 5px;
+}
+
+.contact-simple strong:not(:first-child) {
+    margin-left: 30px;
+}
+
+.contact-simple a {
+    color: #667eea;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin-right: 10px;
+}
+
+.contact-simple a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+/* 页脚样式 */
+footer {
+    background-color: #1a2a44;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+/* 移除旧的contact样式 */
+.contact-container,
+.contact-item,
+.contact-icon,
+.contact-info {
+    display: none;
+}
+
+/* 教育背景部分样式 */
+.education {
+    margin-top: 20px;
+}
+
+.education h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.education-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.education-item:last-child {
+    margin-bottom: 0;
+}
+
+.edu-time {
+    flex-shrink: 0;
+    width: 140px;
+    color: #000000;
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+.edu-details strong {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.edu-details p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
 @media (max-width: 768px) {
-    #modalVideo {
-        width: 95vw;
-        max-height: 60vh;
+    .education-item {
+        flex-direction: column;
+        gap: 10px;
     }
-    .close {
-        top: -20px;
-        right: -20px;
-        font-size: 24px;
+    
+    .edu-time {
+        width: auto;
     }
-    #research .research-item {
-        width: 300px;
-        min-width: 150px;
-    }
+}
+
+/* 专利部分样式 */
+#patents {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    text-align: left;
+}
+
+#patents h2 {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+#patents ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+#patents li {
+    margin-bottom: 15px;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+#patents li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.patent-content {
+    line-height: 1.6;
+}
+
+.patent-content strong {
+    display: inline;
+    font-size: 1.1em;
+    color: #333;
+    margin-right: 8px;
+}
+
+.patent-status {
+    display: inline;
+    color: #666;
+    font-size: 1em;
+    font-style: italic;
+}
+
+/* 荣誉奖励部分样式 */
+#honors {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    text-align: left;
+}
+
+#honors h2 {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+#honors ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+#honors li {
+    margin-bottom: 15px;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #eee;
+}
+
+#honors li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.honor-content {
+    line-height: 1.6;
+}
+
+.honor-content strong {
+    color: #1a2a44;
+    font-weight: 600;
+}
+
+.honor-detail {
+    color: #666;
+    font-style: italic;
+    margin-left: 5px;
+}
+
+/* 教学部分样式 */
+#teaching {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    text-align: left;
+}
+
+#teaching h2 {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+#teaching ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+#teaching li {
+    margin-bottom: 15px;
+}
+
+.teaching-content {
+    line-height: 1.6;
+}
+
+.teaching-content strong {
+    color: #1a2a44;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.teaching-content p {
+    margin: 5px 0 0 0;
+    color: #666;
+    font-size: 1em;
 }
