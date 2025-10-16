@@ -140,5 +140,35 @@
         });
     }
 
+    // Intersection Observer - 智能加载视频
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+                // 视频进入视口时开始播放
+                if (video.paused) {
+                    video.play().catch(err => console.log('Video play failed:', err));
+                }
+            } else {
+                // 视频离开视口时暂停
+                video.pause();
+            }
+        });
+    }, {
+        threshold: 0.5, // 50% 可见时触发
+        rootMargin: '50px' // 提前50px开始加载
+    });
+
+    // 监听所有 research 区域的视频
+    document.addEventListener('DOMContentLoaded', () => {
+        const videos = document.querySelectorAll('#research .media');
+        videos.forEach(video => {
+            videoObserver.observe(video);
+
+            // 移除 autoplay，改为手动控制
+            video.removeAttribute('autoplay');
+        });
+    });
+
     document.addEventListener('DOMContentLoaded', initScrollbar);
 })();

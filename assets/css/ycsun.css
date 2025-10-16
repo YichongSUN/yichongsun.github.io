@@ -163,6 +163,11 @@ h3 {
     object-fit: contain;
     border-radius: 10px 10px 0 0;
     cursor: pointer; /* 提示可点击 */
+    background-color: #f0f0f0; /* 视频加载前的背景色 */
+}
+
+.media[poster] {
+    object-fit: cover; /* poster 图片填充方式 */
 }
 
 /* 视频模态框样式 */
