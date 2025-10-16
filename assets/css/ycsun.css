@@ -7,6 +7,10 @@ body {
     line-height: 1.5;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* 头部导航栏 */
 header {
     background-color: #1a2a44;
@@ -14,6 +18,7 @@ header {
     position: sticky;
     top: 0;
     text-align: center;
+    z-index: 1000; /* 提升堆叠顺序，确保导航栏在其他部分之上 */
 }
 
 nav a {
@@ -36,6 +41,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    scroll-margin-top: 90px;
 }
 
 /* 主页布局 */
@@ -88,13 +94,18 @@ h3 {
 }
 
 #research .research-container {
-    width: 100%;
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
     overflow-x: auto;
     overflow-y: hidden;
     padding: 2rem 0;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin; /* 修复无效值 */
     scroll-behavior: smooth;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
 }
 
 .research-container::-webkit-scrollbar {
@@ -121,6 +132,8 @@ h3 {
     gap: 2rem;
     padding: 0 2rem;
     min-width: max-content;
+    margin: 0 auto;
+    justify-content: center;
 }
 
 #research .research-item {
@@ -136,6 +149,7 @@ h3 {
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
+    text-align: center; /* Center align text */
 }
 
 #research .research-item:hover {
@@ -322,7 +336,19 @@ h3 {
     }
 }
 
-/* 超小屏幕适配 */
+@media (max-width: 768px) {
+    #research .research-container {
+        width: 100%;
+        max-width: none;
+        padding: 1.5rem 0;
+    }
+    
+    #research .research-scroll {
+        padding: 0 1rem;
+        gap: 1.5rem;
+    }
+}
+
 @media (max-width: 480px) {
     nav a {
         margin: 0 0.25rem;
@@ -351,6 +377,11 @@ h3 {
     .honor-content,
     .teaching-content {
         font-size: 0.8rem;
+    }
+    
+    #research .research-scroll {
+        padding: 0 0.75rem;
+        gap: 1rem;
     }
 }
 
@@ -485,14 +516,14 @@ a:hover {
 }
 
 .contact-simple a {
-    color: #667eea;
+    color: #1a2a44;
     text-decoration: none;
     transition: color 0.3s ease;
     margin-right: 10px;
 }
 
 .contact-simple a:hover {
-    color: #764ba2;
+    color: #1a2a44;
     text-decoration: underline;
 }
 
@@ -703,4 +734,17 @@ footer p {
     margin: 5px 0 0 0;
     color: #666;
     font-size: 1em;
+}
+
+#research .research-content {
+    font-size: 1rem;
+    text-align: center;
+}
+
+#research .research-content h3,
+#research .research-content p {
+    text-align: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1rem ;
 }
