@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
     <title>Yichong SUN (孙艺崇) - Medical Robotics Researcher | CUHK PhD Candidate</title>
     
     <!-- SEO Meta Tags -->
@@ -60,20 +61,50 @@
       ]
     }
     </script>
+
+    <script>
+    (function () {
+        var storageKey = 'ycsun-theme-mode';
+        var storedMode = 'auto';
+
+        try {
+            storedMode = localStorage.getItem(storageKey) || 'auto';
+        } catch (error) {
+            storedMode = 'auto';
+        }
+
+        if (storedMode !== 'light' && storedMode !== 'dark' && storedMode !== 'auto') {
+            storedMode = 'auto';
+        }
+
+        var hour = new Date().getHours();
+        var autoTheme = hour >= 7 && hour < 19 ? 'light' : 'dark';
+        var resolvedTheme = storedMode === 'auto' ? autoTheme : storedMode;
+
+        document.documentElement.dataset.themeMode = storedMode;
+        document.documentElement.dataset.theme = resolvedTheme;
+    })();
+    </script>
     
     <link rel="stylesheet" href="assets/css/ycsun.css">
 </head>
 <body>
     <header>
-        <nav role="navigation" aria-label="Main navigation">
-            <a href="#home">About</a>
-            <a href="#research">Research</a>
-            <a href="#publications">Publications</a>
-            <a href="#patents">Patents</a>
-            <a href="#teaching">Teaching</a>
-            <a href="#honors">Honors</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <div class="nav-shell">
+            <nav role="navigation" aria-label="Main navigation">
+                <a href="#home">About</a>
+                <a href="#research">Research</a>
+                <a href="#publications">Publications</a>
+                <a href="#patents">Patents</a>
+                <a href="#teaching">Teaching</a>
+                <a href="#honors">Honors</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Theme mode: Auto. Click to switch between automatic, day, and night modes." title="Theme mode: Auto">
+                <span class="theme-toggle-icon" id="themeToggleIcon" aria-hidden="true">☀</span>
+                <span class="theme-toggle-text" id="themeToggleText">Auto</span>
+            </button>
+        </div>
     </header>
 
     <main>

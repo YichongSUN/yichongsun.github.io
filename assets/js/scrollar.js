@@ -1,5 +1,127 @@
 (function () {
+    const THEME_STORAGE_KEY = 'ycsun-theme-mode';
+    const THEME_MODES = ['auto', 'light', 'dark'];
+    const AUTO_DAY_START = 7;
+    const AUTO_NIGHT_START = 19;
+
     let container, scrollContent, scrollThumb, scrollTrack;
+    let themeToggleButton, themeToggleIcon, themeToggleText;
+
+    function getStoredThemeMode() {
+        try {
+            const storedMode = localStorage.getItem(THEME_STORAGE_KEY) || 'auto';
+            return THEME_MODES.includes(storedMode) ? storedMode : 'auto';
+        } catch (error) {
+            return 'auto';
+        }
+    }
+
+    function saveThemeMode(mode) {
+        try {
+            if (mode === 'auto') {
+                localStorage.removeItem(THEME_STORAGE_KEY);
+                return;
+            }
+
+            localStorage.setItem(THEME_STORAGE_KEY, mode);
+        } catch (error) {
+            console.warn('Theme preference could not be saved:', error);
+        }
+    }
+
+    function getAutoTheme() {
+        const hour = new Date().getHours();
+        return hour >= AUTO_DAY_START && hour < AUTO_NIGHT_START ? 'light' : 'dark';
+    }
+
+    function getThemeState(mode, resolvedTheme) {
+        if (mode === 'auto') {
+            return {
+                icon: resolvedTheme === 'light' ? '☀' : '☾',
+                label: 'Auto'
+            };
+        }
+
+        if (mode === 'light') {
+            return {
+                icon: '☀',
+                label: 'Day'
+            };
+        }
+
+        return {
+            icon: '☾',
+            label: 'Night'
+        };
+    }
+
+    function getNextThemeMode(mode) {
+        const currentIndex = THEME_MODES.indexOf(mode);
+        return THEME_MODES[(currentIndex + 1) % THEME_MODES.length];
+    }
+
+    function applyThemeMode(mode) {
+        const safeMode = THEME_MODES.includes(mode) ? mode : 'auto';
+        const resolvedTheme = safeMode === 'auto' ? getAutoTheme() : safeMode;
+
+        document.documentElement.dataset.themeMode = safeMode;
+        document.documentElement.dataset.theme = resolvedTheme;
+        updateThemeToggle(safeMode, resolvedTheme);
+
+        return resolvedTheme;
+    }
+
+    function updateThemeToggle(mode, resolvedTheme) {
+        if (!themeToggleButton || !themeToggleIcon || !themeToggleText) {
+            return;
+        }
+
+        const currentState = getThemeState(mode, resolvedTheme);
+        const nextMode = getNextThemeMode(mode);
+        const nextState = getThemeState(nextMode, nextMode === 'auto' ? getAutoTheme() : nextMode);
+
+        themeToggleButton.dataset.mode = mode;
+        themeToggleButton.title = `Theme mode: ${currentState.label}. Click to switch to ${nextState.label}.`;
+        themeToggleButton.setAttribute('aria-label', `Theme mode: ${currentState.label}. Click to switch to ${nextState.label}.`);
+        themeToggleIcon.textContent = currentState.icon;
+        themeToggleText.textContent = currentState.label;
+    }
+
+    function refreshAutoTheme() {
+        const currentMode = document.documentElement.dataset.themeMode || getStoredThemeMode();
+
+        if (currentMode === 'auto') {
+            applyThemeMode('auto');
+        }
+    }
+
+    function initThemeToggle() {
+        themeToggleButton = document.getElementById('themeToggle');
+        themeToggleIcon = document.getElementById('themeToggleIcon');
+        themeToggleText = document.getElementById('themeToggleText');
+
+        if (!themeToggleButton || !themeToggleIcon || !themeToggleText) {
+            return;
+        }
+
+        applyThemeMode(getStoredThemeMode());
+
+        themeToggleButton.addEventListener('click', () => {
+            const currentMode = document.documentElement.dataset.themeMode || getStoredThemeMode();
+            const nextMode = getNextThemeMode(currentMode);
+
+            saveThemeMode(nextMode);
+            applyThemeMode(nextMode);
+        });
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+                refreshAutoTheme();
+            }
+        });
+
+        window.addEventListener('focus', refreshAutoTheme);
+    }
 
     function initScrollbar() {
         container = document.querySelector('.research-container');
@@ -168,6 +290,8 @@
             // 移除 autoplay，改为手动控制
             video.removeAttribute('autoplay');
         });
+
+        initThemeToggle();
     });
 
     document.addEventListener('DOMContentLoaded', initScrollbar);
