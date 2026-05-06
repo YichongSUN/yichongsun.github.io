@@ -6,6 +6,7 @@
 
     let container, scrollContent, scrollThumb, scrollTrack;
     let themeToggleButton, themeToggleIcon, themeToggleText;
+    let lastThemeToggleAt = 0;
 
     function getStoredThemeMode() {
         try {
@@ -106,13 +107,26 @@
 
         applyThemeMode(getStoredThemeMode());
 
-        themeToggleButton.addEventListener('click', () => {
+        function cycleThemeMode() {
+            const now = Date.now();
+
+            if (now - lastThemeToggleAt < 500) {
+                return;
+            }
+
+            lastThemeToggleAt = now;
             const currentMode = document.documentElement.dataset.themeMode || getStoredThemeMode();
             const nextMode = getNextThemeMode(currentMode);
 
             saveThemeMode(nextMode);
             applyThemeMode(nextMode);
-        });
+        }
+
+        themeToggleButton.addEventListener('click', cycleThemeMode);
+        themeToggleButton.addEventListener('touchend', (event) => {
+            event.preventDefault();
+            cycleThemeMode();
+        }, { passive: false });
 
         document.addEventListener('visibilitychange', () => {
             if (document.visibilityState === 'visible') {
