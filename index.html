@@ -57,7 +57,8 @@
       "email": "yichongsun@link.cuhk.edu.hk",
       "knowsAbout": ["Medical Robotics", "Robotic-Assisted Surgery", "Surgical Robotics", "Robot Control", "Magnetic Localization"],
       "sameAs": [
-        "https://github.com/yichongsun"
+        "https://github.com/yichongsun",
+        "https://www.linkedin.com/in/yichong-sun-454767332"
       ]
     }
     </script>
@@ -65,24 +66,19 @@
     <script>
     (function () {
         var storageKey = 'ycsun-theme-mode';
-        var storedMode = 'auto';
+        var theme = null;
 
         try {
-            storedMode = localStorage.getItem(storageKey) || 'auto';
+            theme = localStorage.getItem(storageKey);
         } catch (error) {
-            storedMode = 'auto';
+            theme = null;
         }
 
-        if (storedMode !== 'light' && storedMode !== 'dark' && storedMode !== 'auto') {
-            storedMode = 'auto';
+        if (theme !== 'light' && theme !== 'dark') {
+            theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
 
-        var hour = new Date().getHours();
-        var autoTheme = hour >= 7 && hour < 19 ? 'light' : 'dark';
-        var resolvedTheme = storedMode === 'auto' ? autoTheme : storedMode;
-
-        document.documentElement.dataset.themeMode = storedMode;
-        document.documentElement.dataset.theme = resolvedTheme;
+        document.documentElement.dataset.theme = theme;
     })();
     </script>
     
@@ -100,10 +96,13 @@
                 <a href="#honors">Honors</a>
                 <a href="#contact">Contact</a>
             </nav>
-            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Theme mode: Auto. Click to switch between automatic, day, and night modes." title="Theme mode: Auto">
-                <span class="theme-toggle-icon" id="themeToggleIcon" aria-hidden="true">☀</span>
-                <span class="theme-toggle-text" id="themeToggleText">Auto</span>
-            </button>
+            <div class="nav-actions">
+                <a class="view-toggle" href="simple.html" title="Switch to the simple, text-only version of this page">Simple</a>
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Day mode. Click to switch to Night." title="Day mode. Click to switch to Night.">
+                    <span class="theme-toggle-icon" id="themeToggleIcon" aria-hidden="true">☀</span>
+                    <span class="theme-toggle-text" id="themeToggleText">Day</span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -510,7 +509,7 @@
         <h2>Contact</h2>
         <div class="contact-simple" itemscope itemtype="https://schema.org/ContactPoint">
             <strong>Email:</strong> <a href="mailto:yichongsun@link.cuhk.edu.hk" itemprop="email">yichongsun@link.cuhk.edu.hk</a> 
-            <strong>WeChat:</strong> <span itemprop="contactOption">syc0987654</span>
+            <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/yichong-sun-454767332" target="_blank" rel="noopener">Profile</a>
             <strong>Google Scholar:</strong> <a href="https://scholar.google.com/citations?user=0q28ymkAAAAJ&hl=en" target="_blank" rel="noopener">Click here</a>
             <strong>Resume:</strong> <a href="assets/media/CV_YichongSUN.pdf" target="_blank" rel="noopener">Download CV</a>
         </div>
@@ -530,6 +529,7 @@
         </div>
     </div>
 
+<script src="assets/js/theme.js"></script>
 <script src="assets/js/scrollar.js"></script>
 </body>
 </html>

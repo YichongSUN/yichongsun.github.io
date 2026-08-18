@@ -1,0 +1,369 @@
+/* Stylesheet for simple.html only. Self-contained: it does not load ycsun.css.
+   Monospace, one narrow measure, dotted rules, no chrome. */
+
+:root {
+    color-scheme: light;
+
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Source Code Pro", Menlo,
+        Consolas, "DejaVu Sans Mono", monospace;
+
+    --text-xs: 0.72rem;
+    --text-sm: 0.8rem;
+    --text-base: 0.9rem;
+    --text-lg: 1.2rem;
+    --text-xl: 1.45rem;
+    --text-2xl: 1.85rem;
+
+    --leading-body: 1.8;
+    --leading-snug: 1.45;
+    --leading-tight: 1.25;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+
+    --content-width: 70ch;
+    --sidebar-width: 280px;
+    --sidebar-media-max: 220px;
+    --layout-gap: 72px;
+    --page-pad: 20px;
+    --layout-breakpoint: 760px;
+
+    /* Paper and ink. Navy carries over from the full site as the link colour. */
+    --paper: #faf8f3;
+    --ink: #1d2740;
+    --ink-body: #35312a;
+    --ink-muted: #857e72;
+    --link: #1a2a44;
+    --rule: #35312a;
+    --rule-faint: #ddd6c7;
+    --selection: rgba(26, 42, 68, 0.14);
+}
+
+html[data-theme='dark'] {
+    color-scheme: dark;
+    --paper: #191817;
+    --ink: #f1eee7;
+    --ink-body: #d5d0c6;
+    --ink-muted: #928b80;
+    --link: #b8c9ee;
+    --rule: #c3bbab;
+    --rule-faint: #383430;
+    --selection: rgba(184, 201, 238, 0.18);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+::selection {
+    background: var(--selection);
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-gutter: stable;
+    background: var(--paper);
+}
+
+body {
+    margin: 0 auto;
+    padding: var(--page-pad);
+    max-width: calc(var(--content-width) + var(--layout-gap) + var(--sidebar-width) + 2 * var(--page-pad));
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    line-height: var(--leading-body);
+    color: var(--ink-body);
+    background: var(--paper);
+    text-align: left;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Header */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    column-gap: var(--space-5);
+    row-gap: var(--space-1);
+    margin-bottom: var(--space-10);
+    padding-bottom: var(--space-5);
+    border-bottom: 2px dotted var(--rule);
+    line-height: var(--leading-snug);
+}
+
+.site-title {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+}
+
+header nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: var(--space-5);
+    row-gap: 0;
+    text-transform: lowercase;
+}
+
+header nav a,
+header nav button {
+    padding: var(--space-1) 3px;
+    margin-left: -3px;
+    color: var(--ink);
+    text-decoration: none;
+}
+
+header nav a:hover,
+header nav a[data-active],
+header nav button:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+}
+
+header nav a:focus-visible,
+header nav button:focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 2px;
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    text-transform: lowercase;
+    color: var(--ink-muted);
+    cursor: pointer;
+    white-space: nowrap;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Rendered as [day] / [night]: a state marker, not a decorated control.
+   theme.js also writes a sun/moon glyph, which the monospace face renders badly. */
+.theme-toggle-icon {
+    display: none;
+}
+
+.theme-toggle::before {
+    content: "[";
+}
+
+.theme-toggle::after {
+    content: "]";
+}
+
+.theme-toggle:hover {
+    color: var(--ink);
+}
+
+/* Views. Only one renders at a time once simple.js is running. */
+.js .view,
+.js .sidebar {
+    display: none;
+}
+
+.js .view[data-active] {
+    display: block;
+}
+
+.js .sidebar[data-active] {
+    display: block;
+}
+
+/* Layout */
+main.layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+}
+
+main.layout > .content {
+    min-width: 0;
+}
+
+main.layout > .sidebar {
+    margin-top: var(--layout-gap);
+}
+
+main.layout > .content > :first-child,
+main.layout > .sidebar > :first-child {
+    margin-top: 0;
+}
+
+@media (min-width: 760px) {
+    main.layout {
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+        column-gap: var(--layout-gap);
+        align-items: start;
+    }
+
+    main.layout > h1 {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    main.layout > .content {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    main.layout > .sidebar {
+        grid-column: 2;
+        grid-row: 2;
+        margin-top: 0;
+    }
+}
+
+/* Text */
+h1,
+h2 {
+    font-family: inherit;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: var(--leading-tight);
+    letter-spacing: -0.01em;
+}
+
+h1 {
+    font-size: var(--text-2xl);
+    margin: 0 0 var(--space-6);
+}
+
+h2 {
+    font-size: var(--text-xl);
+    margin: var(--space-12) 0 var(--space-4);
+}
+
+p {
+    margin: 0 0 var(--space-5);
+}
+
+a {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-skip-ink: auto;
+    transition: text-decoration-thickness 0.14s ease;
+}
+
+a:hover {
+    text-decoration-thickness: 2px;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 2px;
+}
+
+strong {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+/* Lists */
+ul {
+    padding-left: var(--space-6);
+    margin: 0 0 var(--space-5);
+}
+
+li {
+    margin-bottom: var(--space-1);
+}
+
+.papers {
+    list-style: none;
+    padding-left: 0;
+}
+
+.papers li {
+    margin-bottom: var(--space-5);
+}
+
+.venue {
+    display: block;
+    color: var(--ink-muted);
+    font-size: var(--text-sm);
+    line-height: var(--leading-snug);
+}
+
+/* Sidebar */
+figure {
+    margin: 0 0 var(--space-6);
+}
+
+figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: var(--sidebar-media-max);
+}
+
+@media (min-width: 760px) {
+    figure img {
+        max-width: 100%;
+    }
+}
+
+.sidebar > :last-child {
+    margin-bottom: 0;
+}
+
+/* Footer */
+footer {
+    margin-top: var(--space-10);
+    padding: var(--space-6) 0;
+    border-top: 2px dotted var(--rule);
+    font-size: var(--text-sm);
+    color: var(--ink-muted);
+}
+
+footer p {
+    margin: 0;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+    margin-bottom: var(--space-2);
+    text-transform: lowercase;
+}
+
+footer a {
+    color: var(--ink-muted);
+    text-decoration-color: var(--rule-faint);
+}
+
+footer a:hover {
+    color: var(--ink);
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-1);
+    }
+
+    header nav {
+        display: inline-flex;
+        margin-left: 0;
+    }
+}

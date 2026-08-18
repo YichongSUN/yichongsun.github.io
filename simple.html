@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>README | Yichong SUN (孙艺崇)</title>
+
+    <meta name="description" content="A plain-text version of Yichong SUN's page: PhD candidate in medical robotics at CUHK, working on magnetically actuated surgical robots, localization, and control.">
+    <meta name="author" content="Yichong SUN">
+    <link rel="canonical" href="https://yichongsun.github.io/">
+
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="57492dc1-7bee-474e-87e3-d4640437b0d7"></script>
+
+    <script>
+    (function () {
+        var storageKey = 'ycsun-theme-mode';
+        var theme = null;
+
+        document.documentElement.classList.add('js');
+
+        try {
+            theme = localStorage.getItem(storageKey);
+        } catch (error) {
+            theme = null;
+        }
+
+        if (theme !== 'light' && theme !== 'dark') {
+            theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        document.documentElement.dataset.theme = theme;
+    })();
+    </script>
+
+    <link rel="stylesheet" href="assets/css/simple.css">
+</head>
+<body>
+    <header>
+        <a class="site-title" href="index.html">Yichong SUN (孙艺崇)</a>
+        <nav aria-label="Section navigation">
+            <a href="#readme" data-active aria-current="page">readme</a>
+            <a href="#papers">papers</a>
+            <a href="index.html">full site</a>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Day mode. Click to switch to Night." title="Day mode. Click to switch to Night.">
+                <span class="theme-toggle-icon" id="themeToggleIcon" aria-hidden="true">☀</span>
+                <span class="theme-toggle-text" id="themeToggleText">Day</span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="layout">
+        <h1>README</h1>
+
+        <div class="content">
+            <section class="view" data-view="readme" data-active>
+                <p>I'm Yichong. I build robots that work inside the human body.</p>
+
+                <p>I am a PhD candidate in the Faculty of Medicine at the Chinese University of
+                   Hong Kong, supervised by Prof. Li Zheng and Prof. Yip Honchi. Before that, a
+                   master's in mechanical engineering at Harbin Institute of Technology and a
+                   bachelor's at Chongqing University.</p>
+
+                <p>Most of what I make is magnetic. An endoscope moving through the gut has almost
+                   no room for motors, so you drive it with a field generated outside the patient,
+                   and you find out where it is by reading the field it sends back.</p>
+
+                <p>I work on both halves of that: the hardware that produces and senses the field,
+                   and the control that turns it into motion a surgeon can direct. Some of these
+                   systems have been tested in vivo in animals, others ex vivo on tissue.</p>
+
+                <p>I also teach BMEG 5750, Medical Robotics, as a teaching assistant, and four US
+                   patents from this work are pending.</p>
+
+                <p>The longer version of all this is on the <a href="index.html">full site</a>.</p>
+            </section>
+
+            <section class="view" data-view="papers">
+                <ul class="papers">
+                    <li>
+                        <a href="https://ieeexplore.ieee.org/document/11242002" target="_blank" rel="noopener noreferrer">A MagsL-HUD Endoscopic System for Magnetic Compression Anastomosis Surgery in Unstructured Endoluminal Environment</a>
+                        <span class="venue">IEEE Transactions on Robotics, 2025</span>
+                    </li>
+                    <li>
+                        <a href="https://ieeexplore.ieee.org/document/11224876" target="_blank" rel="noopener noreferrer">A Novel Wireless Magnetic Leader Device for Six-DoF Robotic Teleoperation Control with Expandable Workspace</a>
+                        <span class="venue">IEEE Transactions on Automation Science and Engineering, 2025</span>
+                    </li>
+                    <li>
+                        <a href="https://ieeexplore.ieee.org/abstract/document/10870385" target="_blank" rel="noopener noreferrer">Design and In-Vivo Validation of Clinically Wireless Localization System for Magnetic Robots: A Reconfigurable Sensor Array Approach</a>
+                        <span class="venue">IEEE/ASME Transactions on Mechatronics, 2025</span>
+                    </li>
+                    <li>
+                        <a href="https://ieeexplore.ieee.org/abstract/document/10342414" target="_blank" rel="noopener noreferrer">Model-Based Bending Control of Magnetically-Actuated Robotic Endoscopes for Automatic Retroflexion in Confined Spaces</a>
+                        <span class="venue">IROS, 2023</span>
+                    </li>
+                    <li>
+                        <a href="https://link.springer.com/article/10.1007/s11431-022-2370-9" target="_blank" rel="noopener noreferrer">Design and Control of Deformable Quadrotor with Varying Length Arms</a>
+                        <span class="venue">Science China Technological Sciences, 2023</span>
+                    </li>
+                </ul>
+
+                <p>The full list is on <a href="https://scholar.google.com/citations?user=0q28ymkAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>.</p>
+            </section>
+        </div>
+
+        <aside class="sidebar" data-active>
+            <figure>
+                <img src="assets/images/profile1-web.jpg" alt="Yichong SUN" width="900" height="1200" loading="lazy">
+            </figure>
+
+            <p>Where else you can find me:</p>
+            <ul>
+                <li><a href="mailto:yichongsun@link.cuhk.edu.hk">yichongsun@link.cuhk.edu.hk</a></li>
+                <li><a href="https://www.linkedin.com/in/yichong-sun-454767332" target="_blank" rel="noopener noreferrer">linkedin</a></li>
+                <li><a href="https://scholar.google.com/citations?user=0q28ymkAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">google scholar</a></li>
+                <li><a href="assets/media/CV_YichongSUN.pdf" target="_blank" rel="noopener noreferrer">cv (pdf)</a></li>
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <nav class="footer-links" aria-label="Footer">
+            <a href="index.html">full site</a>
+            <a href="assets/media/CV_YichongSUN.pdf" target="_blank" rel="noopener noreferrer">cv</a>
+            <a href="mailto:yichongsun@link.cuhk.edu.hk">email</a>
+        </nav>
+        <p>Code © Yichong SUN 2026</p>
+    </footer>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/simple.js"></script>
+</body>
+</html>
