@@ -245,6 +245,15 @@ section {
     flex: 1;
 }
 
+/* Standing note to prospective collaborators. Set off from the bio, same type. */
+.bio .opening {
+    box-sizing: border-box;
+    margin-top: 1.1rem;
+    padding-left: 0.95rem;
+    border-left: 3px solid var(--accent-color);
+    color: var(--muted-text);
+}
+
 h1, h2, h3 {
     color: var(--heading-color);
     font-family: 'Times New Roman', serif;
